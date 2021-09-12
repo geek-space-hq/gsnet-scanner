@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "gsnet-scanner"
+version = "0.1.0"
+description = ""
+authors = ["Yoichi TAKAI <contact@peacock0803sz.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "3.8"
+Flask = {extras = ["async"], version = "^2.0.1"}
+uWSGI = "^2.0.19"
+
+[tool.poetry.dev-dependencies]
+black = "^21.8b0"
+mypy = "^0.910"
+flake8 = "^3.9.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )
+)
+'''
