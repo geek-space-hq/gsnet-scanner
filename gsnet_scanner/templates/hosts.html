@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>パスワード認証SSHを許可しているかリスト</title>
+</head>
+<body>
+  <h1>パスワード認証SSHを許可しているかリスト</h1>
+  <table>
+    <th>IPアドレス</th>
+    <th>パスワード認証</th>
+    {% for row in hosts_list %}
+      <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ "Enabled" if row[1] == "True" else "Disabled" }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
