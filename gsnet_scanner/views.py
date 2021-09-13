@@ -29,16 +29,14 @@ def check():
 
     if True == all_hosts[addr]:  # Password authentication is enabled
         context = {
-            "hostname": addr,
             "bg_color": "#ffd600",
             "ogp": "enabled.png",
-            "status": "password authentication is enabled!!",
+            "title": f"Host {addr} password authentication is enabled!!",
         }
     else:  # Disabled
         context = {
-            "hostname": addr,
             "bg_color": "#00c853",
             "ogp": "disabled.png",
-            "status": "password authentication is disabled.",
+            "title": f"Host {addr} password authentication is disabled.",
         }
     return render_template("check.html", **context)
