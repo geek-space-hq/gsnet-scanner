@@ -1,5 +1,4 @@
 import csv
-from gsnet_scanner.scanner import check_password_login, list_hosts, list_opened_ports
 import pathlib
 
 from flask import render_template, request
