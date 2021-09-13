@@ -22,15 +22,15 @@ def check():
     if not q_strings.get("addr"):
         return 400
     addr = q_strings["addr"]
-    if q_strings["addr"] not in list_hosts():
+    with open((HERE / ".." / "assets" / "list.csv").resolve()) as f:
+        reader = csv.reader(f)
+        all_hosts = {row[0]: row[1] == "True" for row in reader}
+    if addr not in all_hosts.keys():
         return render_template("check.html", message=f"Host {addr} is not exists")
 
-    password_login_all_ports = set()
-    for port in list_opened_ports(addr):
-        password_login_all_ports.add(check_password_login(addr, str(port)))
     message = (
-        "Passowrd authentication is enabled!!"
-        if True in password_login_all_ports
-        else "Passowrd authentication is disabled"
+        "Password authentication is enabled!!"
+        if True == all_hosts[addr]
+        else "Password authentication is disabled"
     )
     return render_template("check.html", message=message)
