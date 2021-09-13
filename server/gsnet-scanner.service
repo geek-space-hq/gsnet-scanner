@@ -1,0 +1,21 @@
+# /etc/systemd/system/gsnet-scanner.service
+# Required:
+# (env)pip install uwsgi
+[Unit]
+Description=uWSGI Emperor
+After=syslog.target
+
+[Service]
+User=peacock
+Group=peacock
+ExecStart=/srv/gsnet-scanner/venv/bin/uwsgi --uid peacock --gid peacock --master --emperor /srv/gsnet-scanner/gsnet-scanner/server/uwsgi.ini --die-on-term --logto /srv/gsnet-scanner/emperor.log
+RuntimeDirectory=uwsgi
+Restart=always
+#KillSignal=SIGQUIT
+KillSignal=TERM
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
