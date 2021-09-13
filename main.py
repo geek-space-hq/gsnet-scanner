@@ -1,4 +1,4 @@
-from gsnet_scanner import app, routers  # noqa
+from gsnet_scanner import app, views  # noqa
 
 
 if __name__ == "__main__":
