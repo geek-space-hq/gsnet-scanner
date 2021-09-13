@@ -27,9 +27,18 @@ def check():
     if addr not in all_hosts.keys():
         return render_template("check.html", message=f"Host {addr} is not exists")
 
-    message = (
-        "Password authentication is enabled!!"
-        if True == all_hosts[addr]
-        else "Password authentication is disabled"
-    )
-    return render_template("check.html", message=message)
+    if True == all_hosts[addr]:  # Password authentication is enabled
+        context = {
+            "hostname": addr,
+            "bg_color": "#ffd600",
+            "ogp": "enabled.png",
+            "status": "password authentication is enabled!!",
+        }
+    else:  # Disabled
+        context = {
+            "hostname": addr,
+            "bg_color": "#00c853",
+            "ogp": "disabled.png",
+            "status": "password authentication is disabled.",
+        }
+    return render_template("check.html", **context)

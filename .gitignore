@@ -140,3 +140,4 @@ dmypy.json
 cython_debug/
 
 assets
+!gsnet_scanner/templates/assets

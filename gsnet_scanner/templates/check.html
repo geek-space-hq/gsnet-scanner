@@ -2,9 +2,41 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>{{ message }}</title>
+  <meta property="og:image" content="http://10.57.0.2/assets/{{ ogp }}">
+  <title>Host {{ hostname }}'s {{ status }}</title>
+  <style>
+body {
+  color: #222222;
+  background-color: {{ bg_color }};
+  margin: 0 auto;
+  font-family: Roboto, Verdana, Arial, sans-serif;
+  padding: 0;
+}
+h1 {
+  text-align: center;
+}
+a {
+  color: #222222;
+}
+.outer {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.center {
+  width: 100%;
+  text-align: center;
+}
+.webring {
+  text-align: center;
+}
+.webring a {
+  text-decoration: none;
+  font-size: 1.3em;
+}
+  </style>
 </head>
 <body>
-  <h1>{{ message }}</h1>
+  <h1>Host {{ hostname }}'s {{ status }}</h1>
 </body>
 </html>
